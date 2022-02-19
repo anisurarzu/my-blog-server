@@ -5,7 +5,7 @@ const myProductSchema = require("../schemas/myProductSchema");
 
 const Product = new mongoose.model("Product", myProductSchema);
 
-// get all blogs
+// get all products
 
 router.get("/myProduct", async (req, res) => {
   try {
@@ -15,7 +15,7 @@ router.get("/myProduct", async (req, res) => {
     res.send(err);
   }
 });
-// get single blogs by id
+// get single product by id
 router.get("/myProduct/:id", async (req, res) => {
   try {
     let product = await Product.findOne({ _id: req.params.id });
@@ -36,7 +36,7 @@ router.post("/myProduct", async (req, res) => {
     res.send(err);
   }
 });
-// update blogs
+// update product
 router.put("/myProduct/:id", async (req, res) => {
   let productId = req.params.id;
   let updatedProduct = req.body;
@@ -51,7 +51,7 @@ router.put("/myProduct/:id", async (req, res) => {
     res.send(err);
   }
 });
-// delete blogs
+// delete product
 router.delete("/myProduct/:id", async (req, res) => {
   let productId = req.params.id;
 
