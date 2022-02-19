@@ -1,6 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const blogHandler = require("./routeHandler/blogHandler");
+const productHandler = require("./routeHandler/productHandler");
 
 const cors = require("cors");
 require("dotenv").config();
@@ -16,7 +16,7 @@ app.use(express.json());
 // database connection with mongoose
 mongoose
   .connect(
-    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.g7zap.mongodb.net/myBlog?retryWrites=true&w=majority`,
+    `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.g7zap.mongodb.net/myProduct?retryWrites=true&w=majority`,
     {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -30,13 +30,13 @@ mongoose
   });
 
 // Application routes
-app.use("/api", blogHandler);
+app.use("/api", productHandler);
 
 // root api
 app.get("/", (req, res) => {
-  res.send("My Blog Server is running");
+  res.send("My product Server is running");
 });
 
 app.listen(port, () => {
-  console.log("my blog running on port", port);
+  console.log("my product running on port", port);
 });
